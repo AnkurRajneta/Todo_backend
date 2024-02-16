@@ -3,8 +3,22 @@
         <title>Todo app</title>
     </head>
     <script>
+        function deleteDone(){
+            console.log("delete done")
+        } 
+        function deleteTodo(id){
+            console.log(id);
+            
+            fetch("http://localhost:3000/todos/" + id,{
+                method:"DELETE",
+                headers:{
+                    "Content-Type":"application/json"
+                }
+                
+            }).then(deleteDone)
+        }
         function todosCallback(data){
-            console.log(data);
+            
             var parentElement = document.getElementById("mainArea");
             //parentElement.innerHTML = JSON.stringify(data);
             for(var i = 0; i<data.length; i++){ 
@@ -18,11 +32,12 @@
 
             var grandChildElement3 = document.createElement("button");
             grandChildElement3.innerHTML = "Delete"
+            grandChildElement3.setAttribute("onclick","deleteTodo(" + data[i].id)
 
             childElement.appendChild(grandChildElement1)
             childElement.appendChild(grandChildElement2)
             childElement.appendChild(grandChildElement3)
-
+ 
             parentElement.appendChild(childElement);  
         }
     }
