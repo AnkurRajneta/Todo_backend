@@ -1,7 +1,7 @@
  <html>
     <head>
         <title>Todo app</title>
-    </head>
+    </head> 
     <script>
         function deleteDone(){
             console.log("delete done")
@@ -14,7 +14,7 @@
                 headers:{
                     "Content-Type":"application/json"
                 }
-                
+                  
             }).then(deleteDone)
         }
         function todosCallback(data){
@@ -32,6 +32,7 @@
 
             var grandChildElement3 = document.createElement("button");
             grandChildElement3.innerHTML = "Delete"
+            
             grandChildElement3.setAttribute("onclick","deleteTodo(" + data[i].id)
 
             childElement.appendChild(grandChildElement1)
